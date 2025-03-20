@@ -1,0 +1,66 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Navigation bar styles */
+nav {
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    padding-inline: 20px;
+}
+
+nav button, nav a {
+    color: white;
+    background-color: #555;
+    border: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+nav button:hover, nav a:hover {
+    background-color: #777;
+}
+
+nav a {
+    display: inline-block;
+}
+
+/* Header styles */
+.head {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.head h3 {
+    margin: 0;
+    color: #333;
+}
+
+/* Message area styles */
+.message_area {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.message_area p {
+    margin: 0;
+    color: #555;
+}
