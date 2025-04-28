@@ -13,10 +13,22 @@
         <input type="text" id="username" name="username"><br><br>
         <label>Password</label>
         <input type="password" id="pass" name="pass"><br><br>
+        <span id="result"></span>
         <button type="submit" id="login">Login</button><br>
         <a href="#">Forgot password?</a>
         <a href="signup.html">Create an account</a>
         <a href="/">Go to Home</a>
     </form>
 </body>
+<script>
+    document.getElementById('login').addEventListener('click',()=>{
+        let name = document.getElementById('username').value
+        let pass = document.getElementById('password').value
+        fetch(`http://localhost:${port}/login?username=${name}&pass=${pass}`)
+        .then(response=>window.alert(response.text()))
+        .then(data=>{
+            document.getElementById('')
+        })
+    })
+</script>
 </html>
