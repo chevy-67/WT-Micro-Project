@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Login</h2>
-    <form action="http://localhost:9090/login" method="get">
+    <form action="http://localhost:9090/login" method="post">
         <label>Username</label>
         <input type="text" id="username" name="username"><br><br>
         <label>Password</label>
@@ -20,15 +20,4 @@
         <a href="/">Go to Home</a>
     </form>
 </body>
-<script>
-    document.getElementById('login').addEventListener('click',()=>{
-        let name = document.getElementById('username').value
-        let pass = document.getElementById('password').value
-        fetch(`http://localhost:${port}/login?username=${name}&pass=${pass}`)
-        .then(response=>window.alert(response.text()))
-        .then(data=>{
-            document.getElementById('')
-        })
-    })
-</script>
 </html>
