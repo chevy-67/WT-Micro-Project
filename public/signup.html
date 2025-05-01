@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Signup</h2>
-    <form onsubmit="return check()" action="http://localhost:9090/signup" method="post">
+    <form onsubmit="return check()" id="signup">
         <label for="username">Username : </label>
         <input type="text" id="username" name="username"><br><br>
         <label for="pass">Password : </label>
@@ -16,6 +16,7 @@
         <label>Confirm Password : </label>
         <input type="password" id="pass_confirm">
         <span id="pass_match" style="color:red"></span><br><br>
+        <span id="result"></span>
         <label for="email">E-mail : </label>
         <input type="email" id="email" name="email"><br><br>
         <button type="submit" onclick="check()">Signup</button>
@@ -33,6 +34,32 @@
             }
             return true
         }
+        document.getElementById('signup').addEventListener('submit',async function(e) {
+            e.preventDefault()
+            const username = document.getElementById('username').value
+            const pass = document.getElementById('pass').value
+            const email = document.getElementById('email').value
+
+            const resp = await fetch('http://localhost:9090/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password: pass,email })
+            });
+
+            const result = document.getElementById('result')
+            const message = await resp.text()
+
+            if (resp.ok) {
+                alert('Signup successful!');
+                window.location.href = 'login.html';
+            }
+            else {
+                result.style.color = 'red'
+                result.textContent = message
+            }
+        })
     </script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Login</h2>
-    <form action="http://localhost:9090/login" method="post">
+    <form id="loginForm">
         <label>Username</label>
         <input type="text" id="username" name="username"><br><br>
         <label>Password</label>
@@ -20,4 +20,28 @@
         <a href="/">Go to Home</a>
     </form>
 </body>
+<script>
+    document.getElementById('loginForm').addEventListener('submit',async function(e) {
+        e.preventDefault()
+        const username = document.getElementById('username').value
+        const pass = document.getElementById('pass').value
+        const resp = await fetch('http://localhost:9090/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, pass })
+        });
+
+        const result = await resp.text();
+        const resulTag = document.getElementById('result')
+        if (resp.ok) {
+            localStorage.setItem('username',username)
+            window.location.href = '../index.html'
+        } else {
+            resulTag.style.color = 'red'
+            resulTag.textContent = result || 'Login failed!';
+        }
+    })
+</script>
 </html>
